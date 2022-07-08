@@ -8,7 +8,7 @@ import TableRow from "./TableRow";
 const BeerList: React.FC = () => {
   const [beers, setBeers] = useState<Beer[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  useEffect(() => {
+  const setData = () => {
     setIsLoading(true)
     client
       .get('/beers')
@@ -20,6 +20,9 @@ const BeerList: React.FC = () => {
         console.log(err)
         setIsLoading(false)
       }) 
+  }
+  useEffect(() => {
+    setData()
   }, [])
 
   return (
@@ -38,8 +41,8 @@ const BeerList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-            { beers.map((beer, i) => <TableRow key={i} beer={beer} />) }
-          </tbody>
+          { beers.map((beer, i) => <TableRow key={i} beer={beer} handleChange={setData} />) }
+        </tbody>
         </Table>
       }
     </div>
