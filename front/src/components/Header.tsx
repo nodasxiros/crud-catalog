@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const Header = () => {
+const Header: React.FC = () => {
   return (
     <div className="links">
       <NavLink to="/" className="link" activeClassName="active" exact>
-        Books List
+        All Beers
       </NavLink>
-      <NavLink to="/add" className="link" activeClassName="active">
-        Add Book
+      <NavLink to="/create" className="link" activeClassName="active">
+        Add a Beer
       </NavLink>
     </div>
   );
