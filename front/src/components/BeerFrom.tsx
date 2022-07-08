@@ -1,6 +1,6 @@
 import React, { useState, SyntheticEvent, useEffect } from "react";
 import { Form, Button, Alert } from 'react-bootstrap';
-import { Beer } from "../types";
+import { BeerDto, Beer } from "../types";
 import client from "../client";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams } from 'react-router-dom';
@@ -11,13 +11,13 @@ interface UrlParams {
 
 const BeerForm: React.FC = () => {
   const urlParams = useParams<UrlParams>()
-  const beerDto: Beer = {
+  const beerDto: BeerDto = {
     name: '',
     type: '',
     country: ''
   }
   const [isEditMode, setIsEditMode] = useState<boolean>(false)
-  const [beer, setBeer] = useState<Beer>(beerDto)
+  const [beer, setBeer] = useState<Beer | BeerDto>(beerDto)
   const [isValid, setIsValid] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
   const handleChange = (field: 'name' | 'type' | 'country', value: string): void => {
@@ -27,7 +27,7 @@ const BeerForm: React.FC = () => {
     try {
       e.preventDefault()
       if (isEditMode && urlParams?.id)
-      await client.patch(`/beers/${beer.id}`, beer)
+      await client.patch(`/beers/${(beer as Beer).id}`, beer)
       else
       await client.post('/beers', beer)
       setBeer({
