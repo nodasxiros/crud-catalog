@@ -3,9 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { BeersModule } from './beers/beers.module';
+import { Beer } from './beers/entities/beer.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     SequelizeModule.forRoot({
       dialect: 'mysql',
       host: process.env.MYSQL_HOST,
@@ -13,7 +16,9 @@ import { BeersModule } from './beers/beers.module';
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      models: [],
+      models: [
+        Beer,
+      ],
     }),
     BeersModule,
   ],
