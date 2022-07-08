@@ -34,11 +34,12 @@ $ npx sequelize-cli db:seed:all
 Finally, run yarn command separately for api and front, in different tabs
 ```bash
 # First tab
-$ cd api/ && yarn
+$ cd api/ && yarn start:dev
 
 # Second tab
-$ cd front/ && yarn
+$ cd front/ && yarn start
 ```
+Front should be running on localhost:3001 whereas api on localhost:[port in env]
 ## License
 
 The present web app is [MIT licensed](LICENSE).
