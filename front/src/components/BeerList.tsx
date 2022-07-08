@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import client from "../client";
 import { Table, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavLink } from 'react-router-dom';
 import { Beer } from '../types'
 import TableRow from "./TableRow";
 
