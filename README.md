@@ -24,11 +24,17 @@ If you find it hard to create your own db use the dump provided and import it us
 
 ### Run db migrations and seeders (Only if you've not used dump file)
 ```bash
+# Change into api/ directory
+$ cd api/
+
 # This will run all the migration files
 $ npx sequelize-cli db:migrate
 
 # This will run all the seeder files
 $ npx sequelize-cli db:seed:all
+
+# Change back to root direcotry
+$ cd ..
 ```
 ### Run the project
 Finally, run yarn command separately for api and front, in different tabs
