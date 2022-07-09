@@ -9,7 +9,11 @@ interface UrlParams {
   id?: string
 }
 
-const BeerForm: React.FC = () => {
+type Props = {
+  history: any
+}
+
+const BeerForm: React.FC<Props> = ({ history }) => {
   const urlParams = useParams<UrlParams>()
   const beerDto: BeerDto = {
     name: '',
@@ -35,6 +39,7 @@ const BeerForm: React.FC = () => {
         type: '',
         country: ''
       })
+      history.push('/')
     } catch (error: any) {
       setError(error)
     }
